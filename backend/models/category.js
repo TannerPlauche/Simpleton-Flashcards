@@ -17,11 +17,12 @@ module.exports = function (sequelize, DataTypes) {
             unique: true
         },
     }, {
-        classMethods: {
-            associate: function (models) {
-                // associations can be defined here
-            }
-        }
+        classMethods: {}
     });
+
+    category.associate = function(models){
+        category.belongsToMany(models["card_categories"], {as: "cards", through:"card_categories", key: "id"});
+        category.hasMany(models["card_list"], {as: "lists", foreignKey: "categoryId"})
+    };
     return category;
 };

@@ -1,27 +1,25 @@
 'use strict';
 module.exports = {
     up: function (queryInterface, Sequelize) {
-        return queryInterface.createTable('cards', {
+        return queryInterface.createTable('card_lists', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.UUIDV4
+                type: Sequelize.UUIDv4
             },
-            word: {
+            name: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
-            category: {
-                type: Sequelize.UUIDV4,
+            imgUrl: Sequelize.STRING,
+            categoryId: {
+                type: Sequelize.UUIDv4,
+                allowNull: false,
                 references: {
                     model: "categories",
                     key: "id"
                 }
-            },
-            image: {
-                type: Sequelize.STRING,
-                allowNull: true,
             },
             creatorId: {
                 type: Sequelize.UUIDV4,
@@ -41,6 +39,6 @@ module.exports = {
         });
     },
     down: function (queryInterface, Sequelize) {
-        return queryInterface.dropTable('cards');
+        return queryInterface.dropTable('card_lists');
     }
 };

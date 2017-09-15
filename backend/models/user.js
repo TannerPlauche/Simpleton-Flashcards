@@ -15,11 +15,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
     }, {
-        classMethods: {
-            associate: function (models) {
-                // associations can be defined here
-            }
-        }
+
     });
+
+    user.associate = function(models){
+        user.hasMany(models.card, {as: "cards", foreignKey: "creatorId"});
+        user.hasMany(models["card_list"], {as: "lists", foreignKey: "creatorId"});
+    };
     return user;
 };
