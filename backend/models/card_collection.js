@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    const card_list = sequelize.define('card_list', {
+    const card_collection = sequelize.define('card_collection', {
         cardId: {
             type: DataTypes.INTEGER,
             references: {
@@ -8,10 +8,10 @@ module.exports = function (sequelize, DataTypes) {
                 key: "id"
             }
         },
-        listId: {
+        collectionId: {
             type: DataTypes.INTEGER,
             references: {
-                model: "lists",
+                model: "collections",
                 key: "id"
             }
         },
@@ -20,5 +20,5 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 
-    return card_list;
+    return card_collection;
 };

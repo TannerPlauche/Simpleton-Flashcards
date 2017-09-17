@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var category = sequelize.define('category', {
+    const category = sequelize.define('category', {
         letter: {
             type: DataTypes.CHAR,
             allowNull: false,
@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
 
     category.associate = function(models){
         category.belongsToMany(models.card, {through:"card_category"});
-        category.hasMany(models["card_list"], {as: "lists", foreignKey: "categoryId"})
+        category.hasMany(models.collection, {as: "lists", foreignKey: "categoryId"})
     };
     return category;
 };

@@ -16,11 +16,11 @@ module.exports = {
                     key: "id"
                 }
             },
-            listId: {
+            collectionId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references:{
-                    model: "lists",
+                    model: "collections",
                     key: "id"
                 }
             },

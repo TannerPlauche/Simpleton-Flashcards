@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    const list = sequelize.define('list', {
+    const collection = sequelize.define('collection', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -28,11 +28,11 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {}
     });
 
-    list.associate = function (models) {
-        list.belongsToMany(models.card, {through:"card_list"});
-        // list.hasMany(models.card, {as: "cards", foreignKey: "listId"});
-        list.belongsTo(models.category, {as: "category", foreignKey: "categoryId"});
-        list.belongsTo(models.user, {as: "creator", foreignKey: "creatorId"})
+    collection.associate = function (models) {
+        collection.belongsToMany(models.card, {through:"card_collection"});
+        // collection.hasMany(models.card, {as: "cards", foreignKey: "collectionId"});
+        collection.belongsTo(models.category, {as: "category", foreignKey: "categoryId"});
+        collection.belongsTo(models.user, {as: "creator", foreignKey: "creatorId"})
     };
-    return list;
+    return collection;
 };

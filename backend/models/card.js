@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var card = sequelize.define('card', {
+    const card = sequelize.define('card', {
         word: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
 
     card.associate = function(models){
         card.belongsToMany(models.category, {through:"card_category"});
-        card.belongsToMany(models.list, {through:"card_list"});
+        card.belongsToMany(models.collection, {through:"card_collection"});
         card.belongsTo(models.user, {as: "user", foreignKey: "creatorId"});
     };
     return card;
