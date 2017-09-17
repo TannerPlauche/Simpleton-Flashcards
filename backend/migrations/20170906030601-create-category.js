@@ -6,7 +6,7 @@ module.exports = {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.UUIDV4
+                type: Sequelize.INTEGER,
             },
             letter: {
                 type: Sequelize.CHAR,

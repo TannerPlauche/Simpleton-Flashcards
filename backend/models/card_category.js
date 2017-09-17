@@ -1,13 +1,25 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var card_category = sequelize.define('card_category', {
-    name: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
-  return card_category;
+module.exports = function (sequelize, DataTypes) {
+    const card_category = sequelize.define('card_category', {
+        cardId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "cards",
+                key: "id"
+            }
+        },
+        categoryId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "categories",
+                key: "id"
+            }
+        },
+    }, {
+        classMethods: {}
+    });
+
+    card_category.associate = function(models){
+    };
+    return card_category;
 };

@@ -1,20 +1,21 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var card = sequelize.define('card', {
-        word: {
+    var list = sequelize.define('list', {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
+        },
+        description: {
+            type: DataTypes.TEXT,
         },
         categoryId: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: "categories",
                 key: "id"
             }
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: true,
         },
         creatorId: {
             type: DataTypes.INTEGER,
@@ -27,10 +28,8 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {}
     });
 
-    card.associate = function(models){
-        card.belongsToMany(models.category, {through:"card_category"});
-        card.belongsToMany(models.list, {through:"card_list"});
-        card.belongsTo(models.user, {as: "user", foreignKey: "creatorId"});
+    list.associate = function(models){
+        list.belongsToMany(models.card, {through:"card_list"});
     };
-    return card;
+    return list;
 };

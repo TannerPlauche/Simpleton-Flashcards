@@ -6,25 +6,25 @@ module.exports = {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.UUIDV4
+                type: Sequelize.INTEGER,
             },
             word: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            category: {
-                type: Sequelize.UUIDV4,
+            image: {
+                type: Sequelize.STRING,
+                allowNull: true,
+            },
+            categoryId: {
+                type: Sequelize.INTEGER,
                 references: {
                     model: "categories",
                     key: "id"
                 }
             },
-            image: {
-                type: Sequelize.STRING,
-                allowNull: true,
-            },
             creatorId: {
-                type: Sequelize.UUIDV4,
+                type: Sequelize.INTEGER,
                 references: {
                     model: "users",
                     key: "id"
