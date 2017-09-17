@@ -19,5 +19,6 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {}
     });
 
+
     return card_list;
 };

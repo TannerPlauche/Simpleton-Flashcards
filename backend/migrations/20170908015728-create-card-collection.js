@@ -1,10 +1,15 @@
 'use strict';
 module.exports = {
     up: function (queryInterface, Sequelize) {
-        return queryInterface.createTable('card_lists', {
+        return queryInterface.createTable('card_collections', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER,
+            },
             cardId: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
                 allowNull: false,
                 references: {
                     model: "cards",
@@ -13,7 +18,6 @@ module.exports = {
             },
             listId: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
                 allowNull: false,
                 references:{
                     model: "lists",
@@ -31,6 +35,6 @@ module.exports = {
         });
     },
     down: function (queryInterface, Sequelize) {
-        return queryInterface.dropTable('card_lists');
+        return queryInterface.dropTable('card_collections');
     }
 };

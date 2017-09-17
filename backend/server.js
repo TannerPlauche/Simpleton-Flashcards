@@ -57,16 +57,26 @@ app.post("/dummycard", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-
-app.post("/dummycardcategory", (req, res) => {
-    let newCardCat = models["card_category"].build(req.body);
-    console.log(newCardCat);
-    newCardCat.save()
-        .then(savedCardcat => {
-            res.send(savedCardcat);
+app.post("/dummylist", (req, res) => {
+    let newList = models.list.build(req.body);
+    console.log(newList);
+    newList.save()
+        .then(savedList => {
+            res.send(savedList);
         })
         .catch(err => res.status(500).send(err));
 });
+
+
+// app.post("/dummycardcategory", (req, res) => {
+//     let newCardCat = models["card_category"].build(req.body);
+//     console.log(newCardCat);
+//     newCardCat.save()
+//         .then(savedCardcat => {
+//             res.send(savedCardcat);
+//         })
+//         .catch(err => res.status(500).send(err));
+// });
 
 app.get("/dummyUser", (req, res)=>{
     models.user.findAll({
@@ -103,6 +113,8 @@ app.get("/dummycategory", (req, res)=>{
         })
         .catch(err => res.status(500).send(err));
 });
+
+
 
 app.use("/api", index);
 // app.use("/", (req, res) => {
