@@ -63,16 +63,6 @@ app.post("/dummylist", (req, res) => {
 });
 
 
-app.post("/dummycardcategory", (req, res) => {
-    let newCardCat = models["card_category"].build(req.body);
-    console.log(newCardCat);
-    newCardCat.save()
-        .then(savedCardcat => {
-            res.send(savedCardcat);
-        })
-        .catch(err => res.status(500).send(err));
-});
-
 app.post("/dummycardcollection", (req, res) => {
     let newCardCollection = models["card_collection"].build(req.body);
     console.log(req.body);
@@ -83,13 +73,16 @@ app.post("/dummycardcollection", (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-app.get("/dummyUser", (req, res)=>{
+
+app.get("/dummyUser", (req, res) => {
     models.user.findAll({
-        include:
-            {model: models.card, as: "cards"}
+        include: [
+            {model: models.card, as: "cards"},
+            {model: models.collection, as: "collections"}
+        ]
 
     })
-        .then(foundUsers=>{
+        .then(foundUsers => {
             res.send(foundUsers);
         })
         .catch(err => res.status(500).send(err));
@@ -97,32 +90,38 @@ app.get("/dummyUser", (req, res)=>{
 });
 
 
-app.get("/dummycard", (req, res)=>{
+app.get("/dummycard", (req, res) => {
     models.card.findAll({
-        include:[{model: models.user, as: "user"}, {model: models.category, as: "categories"}, {model: models.collection, as: "collections"}]
+        include: [{model: models.user, as: "user"}, {
+            model: models.category,
+            as: "categories"
+        }, {model: models.collection, as: "collections"}]
     })
-        .then(foundCards=>{
+        .then(foundCards => {
             res.send(foundCards);
         })
         .catch(err => res.status(500).send(err));
 });
 
-app.get("/dummyCollection", (req, res)=>{
+app.get("/dummyCollection", (req, res) => {
     console.log("getlists");
     models.collection.findAll({
-        include:[{model: models.user, as: "creator"}, {model: models.category, as: "category"}, {model: models.card, as: "cards"}]
+        include: [{model: models.user, as: "creator"}, {model: models.category, as: "category"}, {
+            model: models.card,
+            as: "cards"
+        }]
     })
-        .then(foundCollections=>{
+        .then(foundCollections => {
             res.send(foundCollections);
         })
         .catch(err => res.status(500).send(err));
 });
 
-app.get("/dummycategory", (req, res)=>{
+app.get("/dummycategory", (req, res) => {
     models.category.findAll({
-        include:[{model: models.card, as: "cards"}]
+        include: [{model: models.card, as: "cards"}]
     })
-        .then(foundCards=>{
+        .then(foundCards => {
             console.log(foundCards);
             res.send(foundCards);
         })
