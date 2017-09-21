@@ -9,19 +9,16 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             letter: {
-                type: Sequelize.CHAR,
+                type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             location: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             symbol: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             createdAt: {
                 allowNull: false,

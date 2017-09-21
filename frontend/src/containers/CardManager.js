@@ -1,34 +1,33 @@
 import React, { Component } from "react";
+import NewCardForm from "../components/NewCardForm";
+
 // import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
+// import { getCards } from "../actions/cardActions";
 import { getCategories } from "../actions/categoryActions";
-class CategoryManager extends Component {
+
+class CardManager extends Component {
   componentWillMount() {
+    // this.props.getCards();
     if (!this.props.categories.length) {
+      console.log("this.props.categories: ", this.props.categories);
       this.props.getCategories();
     }
   }
 
   render() {
-    let categories = this.props.categories.map((category, index) => (
-      <h3 key={index}>
-        Letter: {category.letter} / Symbol: {category.symbol} / Position:{" "}
-        {category.location}
-      </h3>
-    ));
-
     return (
       <div>
-        <h1> Manage Categories</h1>
-        <div>{categories}</div>
+        <h1>Card Manager</h1>
+        <NewCardForm />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { categories: state.categories };
+  return { cards: state.cards, categories: state.categories };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -39,4 +38,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryManager);
+export default connect(mapStateToProps, mapDispatchToProps)(CardManager);

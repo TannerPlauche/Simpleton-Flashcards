@@ -5,6 +5,7 @@ import BaseLayout from "./containers/BaseLayout";
 import store from "./store/store";
 import HomeContainer from "./containers/HomeContainer";
 import CategoryManager from "./containers/CategoryManager";
+import CardManager from "./containers/CardManager";
 import "./App.css";
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
                     <BaseLayout>
                     <Switch>
                         <Route path="/admin/categories" component={CategoryManager}/>
+                        <Route path="/admin/cards" component={CardManager}/>
                         <Route path="/" component={HomeContainer}/>
                     </Switch>
                     </BaseLayout>

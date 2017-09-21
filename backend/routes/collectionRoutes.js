@@ -1,5 +1,5 @@
-var express = require("express");
-var collectionRouter = express.Router();
+const express = require("express");
+const collectionRouter = express.Router();
 
 
 module.exports = collectionRouter;

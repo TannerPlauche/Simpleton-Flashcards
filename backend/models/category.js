@@ -2,19 +2,17 @@
 module.exports = function (sequelize, DataTypes) {
     const category = sequelize.define('category', {
         letter: {
-            type: DataTypes.CHAR,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },
         location: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
         symbol: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
         },
     }, {
         classMethods: {}
