@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
-import axios from "axios";
-
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getCategories } from "../actions/categoryActions";
+import { CategorySelector } from "../components";
 // import PropTypes from 'prop-types';
 
 class HomeContainer extends Component {
@@ -11,21 +12,19 @@ class HomeContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get("/dummycard").then(results => {
-            this.setState({data: results.data})
-        });
+    componentWillMount() {
+        if (!this.props.categories.length) {
+            this.props.getCategories();
+        }
     }
 
     render() {
         return (
-            <div className="App">
+            <div className="pageContainer">
                 <div className="App-header">
                     <h2>Simpleton Flashcards</h2>
                 </div>
-                <div>
-                    {JSON.stringify(this.state.data)}
-                </div>
+                <CategorySelector categories={this.props.categories} />
             </div>
         );
     }
@@ -33,5 +32,17 @@ class HomeContainer extends Component {
 
 // HomeContainer.propTypes = {};
 // HomeContainer.defaultProps = {};
+const mapStateToProps = (state, ownProps) => {
+    return { categories: state.categories }
+}
 
-export default HomeContainer;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCategories: () => {
+            dispatch(getCategories());
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+

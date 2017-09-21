@@ -13,6 +13,5 @@ export default (state = defaultState, action) => {
     default:
       break;
   }
-
   return newState;
 };

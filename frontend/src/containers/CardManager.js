@@ -11,7 +11,6 @@ class CardManager extends Component {
   componentWillMount() {
     // this.props.getCards();
     if (!this.props.categories.length) {
-      console.log("this.props.categories: ", this.props.categories);
       this.props.getCategories();
     }
   }

@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {Provider} from "react-redux";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import BaseLayout from "./containers/BaseLayout";
 import store from "./store/store";
 import HomeContainer from "./containers/HomeContainer";
@@ -13,13 +13,13 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <BaseLayout>
                     <Switch>
-                        <Route path="/admin/categories" component={CategoryManager}/>
-                        <Route path="/admin/cards" component={CardManager}/>
-                        <Route path="/" component={HomeContainer}/>
+                        <BaseLayout>
+                            <Route path="/admin/categories" component={CategoryManager} />
+                            <Route path="/admin/cards" component={CardManager} />
+                            <Route exact path="/" component={HomeContainer} />
+                        </BaseLayout>
                     </Switch>
-                    </BaseLayout>
                 </BrowserRouter>
             </Provider>
         );
