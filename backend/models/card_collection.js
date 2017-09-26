@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    const card_category = sequelize.define('card_category', {
+    const card_collection = sequelize.define('card_collection', {
         cardId: {
             type: DataTypes.INTEGER,
             references: {
@@ -8,10 +8,10 @@ module.exports = function (sequelize, DataTypes) {
                 key: "id"
             }
         },
-        categoryId: {
+        collectionId: {
             type: DataTypes.INTEGER,
             references: {
-                model: "categories",
+                model: "collections",
                 key: "id"
             }
         },
@@ -19,7 +19,6 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {}
     });
 
-    card_category.associate = function(models){
-    };
-    return card_category;
+
+    return card_collection;
 };

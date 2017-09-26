@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var user = sequelize.define('user', {
+    const user = sequelize.define('user', {
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
 
     user.associate = function(models){
         user.hasMany(models.card, {as: "cards", foreignKey: "creatorId"});
-        user.hasMany(models["card_list"], {as: "lists", foreignKey: "creatorId"});
+        user.hasMany(models.collection, {as: "collections", foreignKey: "creatorId"});
     };
     return user;
 };

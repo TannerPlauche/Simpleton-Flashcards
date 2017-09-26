@@ -1,23 +1,23 @@
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var card = sequelize.define('card', {
+    const card = sequelize.define('card', {
         word: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // category: {
-        //     type: DataTypes.UUIDV4,
-        //     references: {
-        //         model: "categories",
-        //         key: "id"
-        //     }
-        // },
+        categoryId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "categories",
+                key: "id"
+            }
+        },
         image: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        creator: {
-            type: DataTypes.UUIDV4,
+        creatorId: {
+            type: DataTypes.INTEGER,
             references: {
                 model: "users",
                 key: "id"
@@ -28,9 +28,9 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     card.associate = function(models){
-        card.belongsToMany(models["card_categories"], {as: "categories", through:"card_categories", key: "id"});
-        card.belongsToMany(models.user, {as: "categories", key: "id"});
-        card.belongsToMany(models["card_categories"], {as: "categories", key: "id"});
+        card.belongsToMany(models.category, {through:"card_category"});
+        card.belongsToMany(models.collection, {through:"card_collection"});
+        card.belongsTo(models.user, {as: "user", foreignKey: "creatorId"});
     };
     return card;
 };

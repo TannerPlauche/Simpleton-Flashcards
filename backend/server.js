@@ -1,37 +1,104 @@
-var express = require("express");
-var path = require("path");
-var favicon = require("serve-favicon");
-var logger = require("morgan");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
+const express = require("express");
+const path = require("path");
+const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 
-var index = require("./routes/index");
-var users = require("./routes/users");
+const models = require("./models/index");
+const user = require("./models/user");
+const indexRoutes = require("./routes/index");
+const userRoutes = require("./routes/users");
+const cardRoutes = require("./routes/cardRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const collectionRoutes = require("./routes/collectionRoutes");
 
-var app = express();
+const app = express();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+// app.set("views", path.join(__dirname, "views"));
+// app.set("view engine", "jade");
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../frontend/build")));
-// app.use(express.static(path.join(__dirname, "../frontend/public/assets")));
 
-app.use("/api", index);
-// app.use("/", (req, res) => {
-// res.send("Got it.");
-// });
-app.use("/users", users);
+app.use("/categories", categoryRoutes);
+app.use("/cards", cardRoutes);
+
+app.post("/dummycategory", (req, res) => {
+  let newCategory = models.category.build(req.body);
+  console.log(newCategory);
+  newCategory
+    .save()
+    .then(savedCategory => {
+      res.send(savedCategory);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+app.post("/dummylist", (req, res) => {
+  let newCollection = models.collection.build(req.body);
+  console.log(newCollection);
+  newCollection
+    .save()
+    .then(savedCollection => {
+      res.send(savedCollection);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+app.post("/dummycardcollection", (req, res) => {
+  let newCardCollection = models["card_collection"].build(req.body);
+  console.log(req.body);
+  newCardCollection
+    .save()
+    .then(savedCardCollection => {
+      res.send(savedCardCollection);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+app.get("/dummyUser", (req, res) => {
+  models.user
+    .findAll({
+      include: [
+        { model: models.card, as: "cards" },
+        { model: models.collection, as: "collections" }
+      ]
+    })
+    .then(foundUsers => {
+      res.send(foundUsers);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+app.get("/dummyCollection", (req, res) => {
+  console.log("getlists");
+  models.collection
+    .findAll({
+      include: [
+        { model: models.user, as: "creator" },
+        { model: models.category, as: "category" },
+        {
+          model: models.card,
+          as: "cards"
+        }
+      ]
+    })
+    .then(foundCollections => {
+      res.send(foundCollections);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+app.use("/api", indexRoutes);
+app.use("/users", userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error("Not Found");
+  const err = new Error("Not Found");
   err.status = 404;
   next(err);
 });

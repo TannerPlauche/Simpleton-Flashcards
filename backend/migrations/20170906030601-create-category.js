@@ -6,22 +6,19 @@ module.exports = {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.UUIDV4
+                type: Sequelize.INTEGER,
             },
             letter: {
-                type: Sequelize.CHAR,
+                type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             location: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             symbol: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                unique: true
             },
             createdAt: {
                 allowNull: false,

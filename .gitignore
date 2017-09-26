@@ -1,3 +1,4 @@
 node_modules
+#this config is needed to get started
 backend/config/config.json
 .idea

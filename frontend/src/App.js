@@ -1,29 +1,32 @@
 import React, { Component } from "react";
-// import axios from "axios";
-// import logo from "./logo.svg";
+import { Provider } from "react-redux";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import BaseLayout from "./containers/BaseLayout";
+import store from "./store/store";
+import HomeContainer from "./containers/HomeContainer";
+import CategoryManager from "./containers/CategoryManager";
+import CardManager from "./containers/CardManager";
 import "./App.css";
-import BaseLayout from './containers/BaseLayout';
-// import fetch from "fetch";
 
 class App extends Component {
-  componentDidMount() {
-    // axios.get("/api/").then(results => {
-    //   console.log(results.headers);
-    //   console.log("results: ", results.data);
-    // });
-    // fetch("/")
-    //   .then(res => res.json())
-    //   .then(results => console.log("data", JSON.parse(results)));
-  }
-
-  render() {
-    return (
-      <BaseLayout>
-      <div>Saweetness!</div>
-      
-      </BaseLayout>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <MuiThemeProvider>
+                    <BrowserRouter>
+                        <Switch>
+                            <BaseLayout>
+                                <Route path="/admin/categories" component={CategoryManager} />
+                                <Route path="/admin/cards" component={CardManager} />
+                                <Route exact path="/" component={HomeContainer} />
+                            </BaseLayout>
+                        </Switch>
+                    </BrowserRouter>
+                </MuiThemeProvider>
+            </Provider>
+        );
+    }
 }
 
 export default App;
