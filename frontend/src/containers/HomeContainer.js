@@ -33,7 +33,7 @@ class HomeContainer extends Component {
 // HomeContainer.propTypes = {};
 // HomeContainer.defaultProps = {};
 const mapStateToProps = (state, ownProps) => {
-    return { categories: state.categories }
+    return { categories: state.categories.list }
 }
 
 const mapDispatchToProps = (dispatch) => {

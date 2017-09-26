@@ -2,7 +2,8 @@
 import axios from "axios";
 
 // const getCategoriesAction = "GET_CATEGORIES";
-export const setCategoriesAction = "SET_CATEGORIES";
+export const SET_CATEGORIES_ACTION = "SET_CATEGORIES";
+export const TOGGLE_SELECTOR_MODAL = "TOGGLE_SELECTOR_MODAL"
 
 export const getCategories = () => {
   return (dispatch, getState) => {
@@ -13,5 +14,9 @@ export const getCategories = () => {
 };
 
 export const setCategories = payload => {
-  return { type: setCategoriesAction, payload: payload };
+  return { type: SET_CATEGORIES_ACTION, payload: payload };
 };
+
+export const toggleCategorySelectorModal = () => {
+  return { type: TOGGLE_SELECTOR_MODAL };
+}

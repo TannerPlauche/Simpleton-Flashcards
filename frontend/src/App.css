@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: -20px 0 0 0;
 }
@@ -42,6 +46,28 @@ body {
   margin: 5px;
   border-radius: 20px;
   font-size: 27px;
+}
+
+.categorySelectorModal {
+  /* width: 100%; */
+  text-align: center;
+}
+
+.categorySelectorModal h3 {
+  padding: 0 10px !important;
+}
+
+.modalBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around
+}
+
+.modalBoxPaper {
+  flex: 1;
+  width: 32%;
+  padding: 5px 0;
+  margin: 5px;
 }
 
 

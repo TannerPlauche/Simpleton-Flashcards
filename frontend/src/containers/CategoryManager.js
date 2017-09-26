@@ -28,7 +28,7 @@ class CategoryManager extends Component {
 }
 
 function mapStateToProps(state) {
-  return { categories: state.categories };
+  return { categories: state.categories.list };
 }
 
 function mapDispatchToProps(dispatch) {

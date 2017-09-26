@@ -95,7 +95,7 @@ class NewCardForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    categories: state.categories
+    categories: state.categories.list
   };
 };
 

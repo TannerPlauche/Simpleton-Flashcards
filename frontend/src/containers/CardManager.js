@@ -26,7 +26,7 @@ class CardManager extends Component {
 }
 
 function mapStateToProps(state) {
-  return { cards: state.cards, categories: state.categories };
+  return { cards: state.cards, categories: state.categories.list };
 }
 
 function mapDispatchToProps(dispatch) {

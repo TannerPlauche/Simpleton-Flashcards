@@ -19,3 +19,16 @@ export const getCategoriesByLetter = (categories) => {
     [])
     .sort()
 }
+
+export const getCategoryPosition = (char) => {
+  switch (char) {
+    case "I":
+      return "Initial";
+    case "M":
+      return "Middle";
+    case "F":
+      return "Final";
+    default:
+      return "Unknown Position"
+  }
+};
