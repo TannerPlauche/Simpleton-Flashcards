@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.use("/categories", categoryRoutes);
 app.use("/cards", cardRoutes);
+app.use("/collections", collectionRoutes);
 
 app.post("/dummycategory", (req, res) => {
   let newCategory = models.category.build(req.body);
@@ -74,37 +75,18 @@ app.get("/dummyUser", (req, res) => {
     .catch(err => res.status(500).send(err));
 });
 
-app.get("/dummyCollection", (req, res) => {
-  console.log("getlists");
-  models.collection
-    .findAll({
-      include: [
-        { model: models.user, as: "creator" },
-        { model: models.category, as: "category" },
-        {
-          model: models.card,
-          as: "cards"
-        }
-      ]
-    })
-    .then(foundCollections => {
-      res.send(foundCollections);
-    })
-    .catch(err => res.status(500).send(err));
-});
-
 app.use("/api", indexRoutes);
 app.use("/users", userRoutes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new Error("Not Found");
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

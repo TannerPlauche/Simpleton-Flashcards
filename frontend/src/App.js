@@ -7,6 +7,7 @@ import store from "./store/store";
 import HomeContainer from "./containers/HomeContainer";
 import CategoryManager from "./containers/CategoryManager";
 import CardManager from "./containers/CardManager";
+import FlashCardPractice from "./containers/FlashCardPractice";
 import "./App.css";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                             <BaseLayout>
                                 <Route path="/admin/categories" component={CategoryManager} />
                                 <Route path="/admin/cards" component={CardManager} />
+                                <Route exact path="/practice" component={FlashCardPractice} />
                                 <Route exact path="/" component={HomeContainer} />
                             </BaseLayout>
                         </Switch>

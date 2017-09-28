@@ -1,10 +1,11 @@
-// import store from "../store/store";
 import axios from "axios";
 
-// const getCardsAction = "GET_CATEGORIES";
+// ACTION TYPES
 export const SET_CARDS_ACTION = "SET_CATEGORIES";
 export const ADD_SAVED_CARD_ACTION = "Create_New_Card";
+export const GET_DEFAULT_FLASHCARD_LISTS = "GET_DEFAULT_FLASHCARD_LISTS";
 
+// ACTIONS
 export const getCards = newCardData => {
   return (dispatch, getState) => {
     axios.get("/cards").then(response => {
@@ -29,4 +30,10 @@ export const createNewCard = cardData => {
 
 export const addSavedCard = savedCard => {
   return { type: ADD_SAVED_CARD_ACTION, payload: savedCard };
+};
+
+export const getDefaultFlashcardList = (category, positions) => {
+  axios.get("/collections/default", { category, positions })
+    .then(response => console.log(response.data));
+  // return { type: GET_DEFAULT_FLASHCARD_LISTS, payload: { category, positions } };
 };

@@ -7,7 +7,7 @@ export default class CategoryBlock extends Component {
     return (
       // <div className="categorySelectorBlock">
       <RaisedButton
-        onClick={this.props.handleCategoryClick}
+        onClick={() => this.props.handleCategoryClick(letter)}
         backgroundColor="#ff8c00"
         style={{ width: "45%", minWidth: 20, borderRadius: 20, margin: "7px 5px" }}>
         {letter}
