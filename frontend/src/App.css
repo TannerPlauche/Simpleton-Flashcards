@@ -57,7 +57,6 @@ body {
 
 .categorySelectorBlock:hover {
   cursor: pointer;
-  /* background-color: #009150 !important; */
   animation: wobble .15s ease 2 forwards !important;
 }
 

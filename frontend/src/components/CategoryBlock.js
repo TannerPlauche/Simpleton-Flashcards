@@ -3,6 +3,18 @@ import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
 export default class CategoryBlock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: ""
+    };
+  }
+  componentWillMount() {
+    var pastelColors = ["#F6D155", "#AD5D5D", "#034F84", "#006E51"];
+    var randomColor =
+      pastelColors[Math.floor(Math.random() * pastelColors.length)];
+    return this.setState({ color: randomColor });
+  }
   render() {
     let { letter } = this.props.category;
     return (
@@ -20,8 +32,8 @@ export default class CategoryBlock extends Component {
           minHeight: 100,
           borderRadius: 20,
           margin: "20px 20px",
-          color: "pink",
-          border: "5px solid pink",
+          color: this.state.color,
+          border: `5px solid ${this.state.color}`
         }}
       >
         {letter}
