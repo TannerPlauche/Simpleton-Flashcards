@@ -25,6 +25,7 @@ class HomeContainer extends Component {
                     <h2>Simpleton Flashcards</h2>
                 </div>
                 <CategorySelector categories={this.props.categories} />
+                <div id="footer-spacer"></div>
             </div>
         );
     }
