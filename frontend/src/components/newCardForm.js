@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createNewCard } from "../actions/cardActions";
+import { getCategoryPosition } from "../utils";
 import Select from "react-select"; // docs on this component @ https://github.com/JedWatson/react-select
 import reduce from "lodash/reduce";
 
@@ -41,19 +42,15 @@ class NewCardForm extends Component {
 
   render() {
     let { word, image } = this.state.newCard;
-    let matchedLetters = [];
 
     const categoryOptions = reduce(
-      this.props.categories.slice(),
+      this.props.categories,
       (categoriesArray, item) => {
-        if (matchedLetters.indexOf(item.letter) < 0) {
-          matchedLetters.push(item.letter);
-          categoriesArray.push({
-            value: item.id,
-            id: item.id,
-            label: item.letter
-          });
-        }
+        categoriesArray.push({
+          value: item.id,
+          id: item.id,
+          label: getCategoryPosition(item.location) + " " + item.letter
+        });
         return categoriesArray;
       },
       []
