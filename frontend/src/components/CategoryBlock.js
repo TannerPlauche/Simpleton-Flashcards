@@ -24,12 +24,14 @@ export default class CategoryBlock extends Component {
         className="categorySelectorBlock"
         zDepth={3}
         style={{
-          fontSize: "calc(100vw * .15)",
+          fontSize: "8em",
           display: "flex",
-          width: "25%",
-          height: "calc(100vw * .25)",
-          minWidth: "25%",
-          minHeight: 100,
+          /* width: "25%", */
+          /* height: "calc(100vw * .25)", */
+          minWidth: 220,
+          maxWidth: 220,
+          minHeight: 220,
+          maxHeight: 220,
           borderRadius: 20,
           margin: "20px 20px",
           color: this.state.color,
