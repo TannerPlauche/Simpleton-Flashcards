@@ -57,7 +57,7 @@ body {
 
 .categorySelectorBlock:hover {
   cursor: pointer;
-  animation: wobble .15s ease 2 forwards !important;
+  animation: wobble .2s ease !important;
 }
 
 .categorySelectorModal {
