@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RaisedButton from "material-ui/RaisedButton";
+// import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
 export default class CategoryBlock extends Component {
@@ -24,16 +24,16 @@ export default class CategoryBlock extends Component {
         className="categorySelectorBlock"
         zDepth={3}
         style={{
-          fontSize: "8em",
+          fontSize: "3em",
           display: "flex",
-          /* width: "25%", */
-          /* height: "calc(100vw * .25)", */
-          minWidth: 220,
-          maxWidth: 220,
-          minHeight: 220,
-          maxHeight: 220,
-          borderRadius: 20,
-          margin: "20px 20px",
+          width: "calc(100vw * .28)", 
+          height: "calc(100vw * .28)",
+         // minWidth: 100,
+         // maxWidth: 100,
+          //minHeight: 90,
+          //maxHeight: 100,
+          borderRadius: 10,
+          margin: "5px 5px",
           color: this.state.color,
           border: `5px solid ${this.state.color}`
         }}

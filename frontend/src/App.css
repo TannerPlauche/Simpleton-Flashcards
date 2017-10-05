@@ -20,14 +20,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20%;
-  font-size: 3em;
-  font-weight: 200;
-  /* height: 150px; */
-  /* padding: 20px; */
+  height: 15%;
+  margin-bottom: 10px;
+  font-size: calc(50vw * .1);
+  font-weight: 100;
   color: white;
   text-decoration: underline;
   text-decoration-color: #ff8c00;
+}
+
+.App-header h2 {
+ position: relative;
+ top: 8px; 
 }
 
 .App-intro {
@@ -39,13 +43,10 @@ body {
 }
 
 .categorySelector {
-  position: relative;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1200px;
   margin: auto;
 }
 
@@ -88,7 +89,7 @@ body {
 }
 
 #footer-spacer {
-  height: 100px;
+  height: 50px;
 }
 
 /* .categorySelectorBlock h4 {
