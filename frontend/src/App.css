@@ -1,3 +1,5 @@
+/* GLOBAL CHANGES AND OVERRIDES*/
+
 * {
   box-sizing: border-box;
 }
@@ -14,19 +16,29 @@ body {
   text-align: center;
 }
 
-.App-header {
+.App-header,
+.card-manager-wrapper {
   background-color: #009150;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 15%;
   margin-bottom: 10px;
-  font-size: calc(50vw * .1);
   font-weight: 100;
   color: white;
   text-decoration: underline;
   text-decoration-color: #ff8c00;
+}
+
+.card-manager-wrapper {
+  height: 9%;
+  font-size: 2em;
+  margin: 11px 0;
+}
+
+.App-header {
+  height: 15%;
+  font-size: calc(50vw * .1);
 }
 
 .App-header h2 {
@@ -48,6 +60,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
+  max-width: 1200px;
 }
 
 .categorySelectorBlock {
@@ -80,11 +93,31 @@ body {
   align-items: center;
 }
 
+.Select-menu-outer {
+  width: 80%;
+  left: 50%;
+  transform: translatex(-50%);
+  position: relative; 
+}
+
 .modalBoxPaper {
   flex: 1;
   width: 32%;
   padding: 5px 0;
   margin: 5px;
+  cursor: pointer;
+}
+
+.card-form-input::placeholder {
+  color: #AAAAAA;
+}
+
+#card-form-selector::options {
+
+}
+
+#card-form-wrapper button:hover {
+  opacity: .9;
   cursor: pointer;
 }
 
@@ -126,5 +159,11 @@ body {
   100% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+  }
+}
+
+@media (min-width: 800px){
+  .App-header {
+    font-size: 2.5em;
   }
 }

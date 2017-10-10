@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewCardForm from "../components/NewCardForm";
+import '../App.css';
 
 // import PropTypes from 'prop-types';
 import { connect } from "react-redux";
@@ -17,8 +18,8 @@ class CardManager extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Card Manager</h1>
+      <div style={{height: "100vh"}}>
+        <h1 className="card-manager-wrapper">Card Manager</h1>
         <NewCardForm />
       </div>
     );

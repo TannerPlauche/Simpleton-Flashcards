@@ -57,13 +57,14 @@ class NewCardForm extends Component {
     ).sort();
 
     return (
-      <div>
-        <h3>Create Cards</h3>
+      <div id="card-form-wrapper" style={styles.wrapper}>
+        <h3 style={{textAlign: "center"}}>Create Cards</h3>
         <form style={styles.formStyle}>
           <input
             style={styles.inputStyle}
             type="text"
             placeholder="Word"
+            className="card-form-input"
             name="word"
             value={word}
             onChange={this.handleInputChange}
@@ -72,19 +73,22 @@ class NewCardForm extends Component {
             style={styles.inputStyle}
             type="text"
             placeholder="Image Link"
+            className="card-form-input"
             name="image"
             value={image}
             onChange={this.handleInputChange}
           />
         </form>
         <Select
+          id="card-form-selector"
           multi
           placeholder="Phonetic Categories"
           options={categoryOptions}
           onChange={this.handleSelectChange}
           value={this.state.cardCategories}
+          style={styles.selectStyles}
         />
-        <button onClick={this.handleCreateCard}>Add Card</button>
+        <button style={styles.button} onClick={this.handleCreateCard}>Add Card</button>
       </div>
     );
   }
@@ -110,9 +114,36 @@ const styles = {
   formStyle: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    fontSize: "1em",
   },
   inputStyle: {
-    width: "50%"
+    fontSize: "1em",
+    width: "80%",
+    margin: "5px 0 10px 0",
+    border: "1px solid lightgray",
+    padding: 5
+  },
+  selectStyles: {
+    width: "80%",
+    margin: "auto",
+  },
+  button: {
+    position: "relative",
+    backgroundColor: "#FF8C00",
+    outline: "none",
+    fontSize: "1em",
+    border: "none",
+    display: "block",
+    left: "50%",
+    transform: "translatex(-50%)",
+    padding: "10px 40px",
+    marginTop: 8,
+    borderRadius: 5,
+    fontWeight: 500
+  },
+  wrapper: {
+    maxWidth: 800,
+    margin: "auto"
   }
 };
