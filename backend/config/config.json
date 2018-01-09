@@ -1,0 +1,24 @@
+{
+    "development": {
+        "username": "simpletonspeech",
+        "password": "buttercheesehambottle",
+        "database": "simpletonflashcards",
+        "host": "simpletonflashcards.cgxokme5qspi.us-west-2.rds.amazonaws.com",
+        "port": 5432,
+        "dialect": "postgres"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "simpletonspeech",
+        "password": "buttercheesehambottle",
+        "database": "simpletonflashcards",
+        "host": "simpletonflashcards.cgxokme5qspi.us-west-2.rds.amazonaws.com",
+        "dialect": "postgres"
+    }
+}
